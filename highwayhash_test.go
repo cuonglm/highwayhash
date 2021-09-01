@@ -13,6 +13,7 @@ import (
 	"runtime"
 	"sync/atomic"
 	"testing"
+	"time"
 )
 
 func TestVectors(t *testing.T) {
@@ -201,6 +202,7 @@ func benchmarkSum64(size int64, b *testing.B) {
 	b.SetBytes(size)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
+		time.Sleep(100 * time.Millisecond)
 		Sum64(data, key[:])
 	}
 }
